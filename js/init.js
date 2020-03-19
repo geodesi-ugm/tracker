@@ -76,6 +76,6 @@ function myFunction() {
   //var element = document.getElementById("maprow");
   //element.classList.toggle("hide");
   console.log('submitted');
-  window.location.href='/thanks';
+  window.location.href='./thanks';
 
 }
