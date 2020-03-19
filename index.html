@@ -7,7 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Tracking Mahasiswa</title>
   
-  <base href="/tracker/">
+  
+<base href="/tracker/">
+  
+  
   
   <!-- Favicons-->
   <link  rel="shortcut icon" type='image/x-icon' href="favicon.png">
@@ -19,10 +22,6 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
-
-
-
 
 </head>
 
@@ -98,12 +97,21 @@
             <div class="input-field col s12">
               <textarea name="entry.1381654095" id="bepergian" class="materialize-textarea"></textarea>
               <label for="bepergian">Riwayat bepergian dalam sebulan terakhir</label>
+              <span class="helper-text">Sebutkan nama kota/kab yang dikunjungi selama sebulan terakhir. Pisahkan koma jika lebih dari satu</span>
             </div>
           </div>
 
           <div class="row" id="maprow">
-            <i> Tandai Lokasi Kos </i>
+            <div class="row">
+              <i> Tandai Lokasi Kos/Tempat tinggal saat ini </i>
+            </div>
+            <div class="row">
+              <i id="geo" class="waves-effect waves-light btn"><i class="material-icons right">location_searching</i>aktifkan pencarian lokasi</i>
+            </div>
+            
+            
             <div class="card">
+              
               <div class="card-content">
                 <div id="map"></div>
               </div>

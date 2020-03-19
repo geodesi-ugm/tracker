@@ -4,7 +4,7 @@ function init() {
 }
 document.addEventListener('DOMContentLoaded', init);
 
-var map = L.map('map');
+var map = L.map('map').setView([-7.7651555,110.370575], 17);
 
 L.tileLayer(
   'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGFueWxha3Nvbm8iLCJhIjoiUXRXLUdOVSJ9.zx09INjtQNEB-OoWhOOt3A', {
@@ -25,6 +25,9 @@ marker.on('dragend', function (e) {
   setLocation(marker.getLatLng().lat, marker.getLatLng().lng);  
 }).addTo(map);
 
+map.on('locationfound', onLocationFound);
+map.on('locationerror', onLocationError);
+map.on('click', onMapClick);
 
 function onMapClick(e) {
   marker.setLatLng(e.latlng);
@@ -49,16 +52,19 @@ function setLocation(lat, lng){
   document.querySelector('#long').value = lng;
 }
 
-map.on('locationfound', onLocationFound);
-map.on('locationerror', onLocationError);
 
-map.locate({
-  setView: true,
-  maxZoom: 19
-});
+function getLocation(){
+  map.locate({
+    setView: true,
+    maxZoom: 19
+  });
+}
 
 
-map.on('click', onMapClick);
+var geolocate = document.querySelector('#geo');
+geolocate.addEventListener("click", getLocation);
+
+
 
 var modal = document.querySelector('.modal');
 M.Modal.init(modal, {
